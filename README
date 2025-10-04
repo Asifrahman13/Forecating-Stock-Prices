@@ -24,8 +24,8 @@ This ARIMA model predicts Apple (AAPL) stock prices with exceptional accuracy.
 
 | Model | RMSE ($) | MAPE (%) | Accuracy (%) |
 |-------|----------|----------|--------------|
-| **ARIMA** | **2.81** | **1.05** | **98.95** |
-| LSTM | 8.42 | 3.35 | 96.65 |
+| ARIMA |    2.81  |   1.05   |    98.95     |
+| LSTM  |    8.42  |   3.35   |    96.65     |
 
 ## Dataset
 
@@ -49,4 +49,5 @@ data = yf.download('AAPL', start='2024-01-01', end='2024-10-01')
 
 # Make prediction
 forecast = model.forecast(steps=1)
+
 print(f"Next day prediction: ${forecast.values[0]:.2f}")
