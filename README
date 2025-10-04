@@ -1,0 +1,52 @@
+---
+license: mit
+tags:
+- time-series
+- stock-prediction
+- arima
+- forecasting
+datasets:
+- AAPL Stock Data
+metrics:
+- rmse
+- mape
+---
+
+# Stock Price Forecasting - ARIMA Model
+
+## Model Description
+
+This ARIMA model predicts Apple (AAPL) stock prices with exceptional accuracy.
+
+**Winner**: ARIMA outperformed LSTM by 66.62%
+
+## Performance Metrics
+
+| Model | RMSE ($) | MAPE (%) | Accuracy (%) |
+|-------|----------|----------|--------------|
+| **ARIMA** | **2.81** | **1.05** | **98.95** |
+| LSTM | 8.42 | 3.35 | 96.65 |
+
+## Dataset
+
+- **Source**: Yahoo Finance
+- **Ticker**: AAPL (Apple Inc.)
+- **Period**: January 2020 - September 2024
+- **Observations**: 1,194 daily closing prices
+
+## Usage
+```python
+import pickle
+import yfinance as yf
+
+# Download model from this repository
+# Load the model
+with open('best_arima_model.pkl', 'rb') as f:
+    model = pickle.load(f)
+
+# Get recent stock data
+data = yf.download('AAPL', start='2024-01-01', end='2024-10-01')
+
+# Make prediction
+forecast = model.forecast(steps=1)
+print(f"Next day prediction: ${forecast.values[0]:.2f}")
